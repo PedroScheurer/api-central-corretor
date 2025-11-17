@@ -22,12 +22,12 @@ public class PointEntity {
 	@Column(length = 255, nullable = false)
 	private String description;
 	@Column(columnDefinition = "decimal(17,14)", nullable = false)
-	private Double latitude;
+	private double latitude;
 	@Column(columnDefinition = "decimal(17,14)", nullable = false)
-	private Double longitude;
+	private double longitude;
 	
 	@JoinColumn(name = "iduser")
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private UserEntity user;
 
 	public UUID getId() {
