@@ -2,6 +2,7 @@ package br.edu.atitus.api_example.entities;
 
 import java.util.UUID;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -9,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -20,6 +22,8 @@ public class ImovelEntity{
 	@GeneratedValue(strategy = GenerationType.UUID)
 	private UUID id;
 	
+	@Column(length = 255, nullable = false)
+	private String nome;
 	@Column(length = 255, nullable = false)
 	private String logradouro;
 	@Column(length = 15)
@@ -38,21 +42,13 @@ public class ImovelEntity{
 	private double area;
 	
 	@JoinColumn
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(cascade = CascadeType.ALL)
 	private PointEntity point;
 	
-	public ImovelEntity(String logradouro, String numero, String bairro, String complemento, int cep, String cidade,
-			String estado, double area) {
-		this.logradouro = logradouro;
-		this.numero = numero;
-		this.bairro = bairro;
-		this.complemento = complemento;
-		this.cep = cep;
-		this.cidade = cidade;
-		this.estado = estado;
-		this.area = area;
-	}
-
+	@JoinColumn(name = "iduser")
+	@ManyToOne(fetch = FetchType.EAGER)
+	private UserEntity user;
+	
 	public String getLogradouro() {
 		return logradouro;
 	}
@@ -115,6 +111,38 @@ public class ImovelEntity{
 
 	public void setArea(double area) {
 		this.area = area;
+	}
+
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
+	}
+
+	public PointEntity getPoint() {
+		return point;
+	}
+
+	public void setPoint(PointEntity point) {
+		this.point = point;
+	}
+
+	public UserEntity getUser() {
+		return user;
+	}
+
+	public void setUser(UserEntity user) {
+		this.user = user;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 }
