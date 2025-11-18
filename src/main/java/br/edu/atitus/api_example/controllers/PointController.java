@@ -43,12 +43,6 @@ public class PointController {
 		return ResponseEntity.status(201).body(point);
 	}
 	
-	@DeleteMapping("/{id}")
-	public ResponseEntity<String> delete (@PathVariable UUID id) throws Exception{
-		service.deleteById(id);
-		return ResponseEntity.ok("Ponto deletado");
-	}
-	
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<String> exceptionHandler(Exception e) {
 		String message = e.getMessage().replaceAll("\r\n", "");

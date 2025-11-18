@@ -33,7 +33,7 @@ public class ImovelEntity{
 	@Column(length = 255)
 	private String complemento;
 	@Column(length = 8, nullable = false)
-	private int cep;
+	private String cep;
 	@Column(length = 255, nullable = false)
 	private String cidade;
 	@Column(length = 255, nullable = false)
@@ -81,11 +81,11 @@ public class ImovelEntity{
 		this.complemento = complemento;
 	}
 
-	public int getCep() {
+	public String getCep() {
 		return cep;
 	}
 
-	public void setCep(int cep) {
+	public void setCep(String cep) {
 		this.cep = cep;
 	}
 

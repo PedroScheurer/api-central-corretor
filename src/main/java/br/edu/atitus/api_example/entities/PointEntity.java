@@ -4,12 +4,9 @@ import java.util.UUID;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,10 +22,6 @@ public class PointEntity {
 	private double latitude;
 	@Column(columnDefinition = "decimal(17,14)", nullable = false)
 	private double longitude;
-	
-	@JoinColumn(name = "iduser")
-	@ManyToOne(fetch = FetchType.EAGER)
-	private UserEntity user;
 
 	public UUID getId() {
 		return id;
@@ -60,14 +53,6 @@ public class PointEntity {
 
 	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
-	}
-
-	public UserEntity getUser() {
-		return user;
-	}
-
-	public void setUser(UserEntity user) {
-		this.user = user;
 	}
 
 }

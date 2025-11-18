@@ -3,7 +3,6 @@ package br.edu.atitus.api_example.controllers;
 import java.util.List;
 import java.util.UUID;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.atitus.api_example.dtos.ImovelDTO;
@@ -35,10 +35,15 @@ public class ImovelController {
 		return ResponseEntity.ok(lista);
 	}
 	
+	@GetMapping(params = "nome")
+	public ResponseEntity<List<ImovelEntity>> findByName(@RequestParam String nome){
+		var lista = service.findByName(nome);
+		return ResponseEntity.ok(lista);
+	}
+	
 	@PostMapping
 	public ResponseEntity<ImovelEntity> save(@RequestBody ImovelDTO dto) throws Exception{
-		ImovelEntity imovel = new ImovelEntity();
-		BeanUtils.copyProperties(dto, imovel);
+		ImovelEntity imovel = service.fromDTO(dto);
 		service.save(imovel);
 		return ResponseEntity.status(201).body(imovel);
 	}
