@@ -15,13 +15,13 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="tb_imoveis")
-public class ImovelEntity{
-	
+@Table(name = "tb_imoveis")
+public class ImovelEntity {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	private UUID id;
-	
+
 	@Column(length = 255, nullable = false)
 	private String nome;
 	@Column(length = 255, nullable = false)
@@ -40,15 +40,22 @@ public class ImovelEntity{
 	private String estado;
 	@Column(columnDefinition = "decimal(10,2)", nullable = false)
 	private double area;
-	
+	@Column(length = 11, nullable = false)
+	private String tipo;
+	@Column(columnDefinition = "decimal(10,2)", nullable = false)
+	private double valor;
+
 	@JoinColumn
 	@OneToOne(cascade = CascadeType.ALL)
 	private PointEntity point;
-	
+
 	@JoinColumn(name = "iduser")
 	@ManyToOne(fetch = FetchType.EAGER)
 	private UserEntity user;
-	
+
+	public ImovelEntity() {
+	}
+
 	public String getLogradouro() {
 		return logradouro;
 	}
@@ -144,5 +151,21 @@ public class ImovelEntity{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public double getValor() {
+		return valor;
+	}
+
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+
 }

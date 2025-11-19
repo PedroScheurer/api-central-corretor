@@ -12,6 +12,6 @@ public interface ImovelRepository extends JpaRepository<ImovelEntity, UUID> {
 
 	List<ImovelEntity> findByUser(UserEntity user);
 
-	List<ImovelEntity> findByNomeContainsIgnoreCase(String nome);
+	List<ImovelEntity> findByNomeContainsIgnoreCaseAndUser(String nome, UserEntity user);
 
 }
