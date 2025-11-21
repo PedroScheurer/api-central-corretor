@@ -5,10 +5,12 @@ Uma API RESTful robusta desenvolvida para auxiliar corretores de imóveis na ges
 O sistema oferece um conjunto completo de operações CRUD (Create, Read, Update, Delete) para as entidades principais: Usuários, Imóveis, Clientes e Vendas.
 
 👥 Gestão de Usuários (Autenticação)
+
 -Autocadastro de novos usuários.<br>
 -Login para obtenção do token de acesso (JWT).<br>
 
 🏡 Gestão de Imóveis
+
 -Cadastrar um novo imóvel.<br>
 -Buscar todos os imóveis cadastrados pelo usuário.<br>
 -Buscar imóvel específico por nome e usuário.<br>
@@ -16,12 +18,14 @@ O sistema oferece um conjunto completo de operações CRUD (Create, Read, Update
 -Deletar um imóvel.<br>
 
 🧑‍💼 Gestão de Clientes
+
 -Cadastrar um novo cliente.<br>
 -Buscar todos os clientes cadastrados pelo usuário.<br>
 -Buscar cliente específico por nome e usuário.<br>
 -Deletar um cliente.<br>
 
 💰 Gestão de Vendas
+
 -Cadastrar uma nova venda (vinculando cliente e imóvel).<br>
 -Buscar todas as vendas realizadas pelo usuário.<br>
 -Deletar um registro de venda.<br>
