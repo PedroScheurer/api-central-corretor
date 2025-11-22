@@ -32,7 +32,7 @@ public class PessoaEntity {
 	private String orgEmissor;
 	@Column
 	private String uf;
-	@Column(length = 255, nullable = false)
+	@Column(length = 255)
 	private String logradouro;
 	@Column(length = 15)
 	private String numero;
@@ -40,13 +40,13 @@ public class PessoaEntity {
 	private String bairro;
 	@Column(length = 255)
 	private String complemento;
-	@Column(length = 8, nullable = false)
+	@Column(length = 8)
 	private String cep;
-	@Column(length = 255, nullable = false)
+	@Column(length = 255)
 	private String cidade;
-	@Column(length = 255, nullable = false)
+	@Column(length = 255)
 	private String estado;
-	@Column(length = 100, nullable = false)
+	@Column(length = 100)
 	private String email;
 	@Column(length = 14)
 	private String telefone1;
@@ -59,7 +59,7 @@ public class PessoaEntity {
 	@Column
 	private String observacoes;
 
-	@JoinColumn(name = "iduser")
+	@JoinColumn(name = "iduser",nullable = false)
 	@ManyToOne(fetch = FetchType.EAGER)
 	private UserEntity user;
 

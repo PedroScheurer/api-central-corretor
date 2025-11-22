@@ -30,11 +30,13 @@ public class UserService implements UserDetailsService {
 			throw new Exception("Nome inválido");
 		user.setName(user.getName().trim());
 
-		if (user.getEmail() == null || user.getEmail().isEmpty() || !user.getEmail().contains("@"))
+		if (user.getEmail() == null || user.getEmail().isEmpty() || !user.getEmail().contains("@")
+				|| !validarEmail(user.getEmail()))
 			throw new Exception("E-mail inválido");
 		user.setEmail(user.getEmail().trim());
 
-		if (user.getPassword() == null || user.getPassword().isEmpty() || user.getPassword().length() < 8)
+		if (user.getPassword() == null || user.getPassword().isEmpty() || user.getPassword().length() < 8
+				|| !validarSenha(user.getPassword()))
 			throw new Exception("Password inválido");
 		user.setPassword(enconder.encode(user.getPassword()));
 
@@ -54,5 +56,15 @@ public class UserService implements UserDetailsService {
 		var user = repository.findByEmail(email)
 				.orElseThrow(()-> new UsernameNotFoundException("Usuário não encontrado com este email"));
 		return user;
+	}
+	
+	private boolean validarEmail(String email) {
+	    String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+	    return email.matches(regex);
+	}
+	
+	private boolean validarSenha(String senha) {
+		String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$";
+		return senha.matches(regex);
 	}
 }

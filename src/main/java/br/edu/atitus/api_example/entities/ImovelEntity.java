@@ -1,5 +1,6 @@
 package br.edu.atitus.api_example.entities;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 import jakarta.persistence.CascadeType;
@@ -43,13 +44,13 @@ public class ImovelEntity {
 	@Column(length = 11, nullable = false)
 	private String tipo;
 	@Column(columnDefinition = "decimal(10,2)", nullable = false)
-	private double valor;
+	private BigDecimal valor;
 
-	@JoinColumn
+	@JoinColumn(name="id_point")
 	@OneToOne(cascade = CascadeType.ALL)
 	private PointEntity point;
 
-	@JoinColumn(name = "iduser")
+	@JoinColumn(name = "id_user", nullable = false)
 	@ManyToOne(fetch = FetchType.EAGER)
 	private UserEntity user;
 
@@ -160,11 +161,11 @@ public class ImovelEntity {
 		this.tipo = tipo;
 	}
 
-	public double getValor() {
+	public BigDecimal getValor() {
 		return valor;
 	}
 
-	public void setValor(double valor) {
+	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
 

@@ -11,6 +11,6 @@ import br.edu.atitus.api_example.entities.UserEntity;
 public interface PessoaRepository extends JpaRepository<PessoaEntity, UUID> {
 
 	List<PessoaEntity> findByUser(UserEntity user);
-	
+
 	List<PessoaEntity> findByNomeContainsIgnoreCaseAndUser(String nome, UserEntity user);
 }

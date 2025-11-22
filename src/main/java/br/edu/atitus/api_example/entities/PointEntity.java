@@ -17,7 +17,7 @@ public class PointEntity {
 	@GeneratedValue(strategy = GenerationType.UUID)
 	private UUID id;
 	@Column(length = 255, nullable = false)
-	private String description;
+	private String descricao;
 	@Column(columnDefinition = "decimal(17,14)", nullable = false)
 	private double latitude;
 	@Column(columnDefinition = "decimal(17,14)", nullable = false)
@@ -31,12 +31,12 @@ public class PointEntity {
 		this.id = id;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public Double getLatitude() {
